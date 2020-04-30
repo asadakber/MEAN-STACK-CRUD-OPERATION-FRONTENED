@@ -1,0 +1,86 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-header">
+          crud operations
+        </div>
+        <div class="card-body">
+          <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
+            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="employeeService.selectedEmployee._id">
+        
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Name</label>
+                <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" type="text" name="name" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.name" placeholder="Enter full name" required>
+              </div>
+           
+              <div class="form-group">
+                <label  for="exampleInputEmail1">Position</label>
+                <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" type="text" name="position" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.position" placeholder="Eg : Snr. Developer">
+          
+              </div>
+           
+              <div class="form-group">
+                <label for="exampleInputEmail1">Office</label>
+                <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" type="text" name="office" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.office" placeholder="Enter office location">
+                
+              </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Salary</label>
+                <input  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" type="text" name="salary" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.salary" placeholder="Salary per annum">
+               
+              </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <button class="btn btn-primary right" type="button" (click)="resetForm(employeeForm)">Reset</button>
+                <button class="btn btn-info right" type="submit" [disabled]="!employeeForm.valid">Submit</button>
+              </div>
+            </div>
+          </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+             
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Position</th>
+                        <th scope="col">Office</th>
+                        <th scope="col">Salary</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                        <th scope="col">Details</th>
+                      </tr>
+                    </thead>
+                    <tr *ngFor="let emp of employeeService.employees; let i = index">
+                      <td>{{emp.name}}</td>
+                      <td>{{emp.position}}</td>
+                      <td>{{emp.office}}</td>
+                      <td>{{emp.salary}}</td>
+                      <td>
+                          <a class="btn btn-primary" (click)="onEdit(emp)">
+                            <i class="material-icons">edit</i>
+                          </a>
+                      </td>
+                      <td>
+                          <a class="btn btn-danger" (click)="onDelete(emp._id,employeeForm)">
+                            <i class="material-icons">delete</i>
+                          </a>
+                      </td>
+                      <td>
+                          <a class="btn btn-info"  routerLink="/employeeDetails/{{emp._id}}">
+                            details
+                          </a>
+                        </td>
+                    </tr>
+                  </table>
+      
+                </div>
+              </div>
+            </div>

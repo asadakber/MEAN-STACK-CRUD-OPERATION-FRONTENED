@@ -1,0 +1,12 @@
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong><em>Name: </em></strong> <em>{{(emp | async)?.name}}</em></li>
+                <li class="list-group-item"><strong><em>Position: </em></strong>  <em>{{(emp | async)?.position}}</em></li>
+                <li class="list-group-item"><strong><em>Office: </em></strong>  <em>{{(emp | async)?.office}}</em></li>
+                <li class="list-group-item"><strong><em>Salary: </em></strong>  <em>{{(emp | async)?.salary}}</em></li>
+            </ul>
+        </div>
+    </div>
+</div>
